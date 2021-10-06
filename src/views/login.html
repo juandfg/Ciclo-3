@@ -8,9 +8,11 @@
     <%-include("partials/head.html")%>
 </head>
 <body class="login-body">
+    <%-include("partials/body.html")%>
     <div class="login-form">
         <h2>Login</h2>
         <form action="/auth" method="POST">
+            <img src="/imagenes/logo.png" class="img-fluid" alt="">
             <input type="text" name="user" id="user" placeholder="user" required>
             <input type="password" name="pass" id="pass" placeholder="password" required>
             <input type="submit" class="btn-login" value="login">
@@ -29,7 +31,7 @@
                 showConfirmButton:<%= showConfirmButton %> ,
                 timer:<%= timer%>
             }).then(() =>{
-                window.location='/ <%= ruta%>'
+                window.location='<%= ruta%>'
             });
         </script>
     <% } %>

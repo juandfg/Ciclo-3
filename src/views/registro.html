@@ -9,9 +9,11 @@
     <%-include("partials/head.html")%>
 </head>
 <body class="registro">
+    <%-include("partials/body.html")%>
     <div class="login-form">
         <h2>Registrar</h2>
-        <form action="registro.html" method="POST">
+        <form action="registro.html"  method="POST">
+            <img src="/imagenes/logo.png" class="card-img-top" alt="">
             <input type="text" name="user" id="user" placeholder="user" required>
             <input type="password" name="pass" id="pass" placeholder="password" required>
             <input type="submit" class="btn-login" value="Registrar">
@@ -30,7 +32,7 @@
                 showConfirmButton:<%= showConfirmButton %> ,
                 timer:<%= timer%>
             }).then(() =>{
-                window.location='/ <%= ruta%>'
+                window.location='<%= ruta%>'
             })
         </script>
     <% } %>
