@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <%-include("partials/head.html")%>
+</head>
+<body>
+    <%-include("partials/body.html")%>
+    <div class="container">
+        <div class="col-12">
+            <table class="shadow-lg table table-success table-striped table-hover" >
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">PRODUCTO</th>
+                        <th scope="col">DESCRIPCION</th>
+                        <th scope="col">STOCK</th>
+                        
+                        <th>
+                            <button class="btn btn-success shadow-lg "><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-success shadow-lg"><i class="bi bi-pencil"></i></button>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    
+</body>
+</html>

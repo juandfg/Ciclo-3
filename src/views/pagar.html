@@ -5,28 +5,68 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagar</title>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
     <%-include("partials/head.html")%>
 </head>
 <body>
     <%-include("partials/body.html")%>
-    <div class="container">
-        <div class="row">
-            <div class="col-9">
-                <div class="card w-50" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+    <main>
+        <!-- Shopping Cart -->
+        <section class="shopping-cart dark">
+            <div class="container" id="container">
+                <div class="block-heading">
+                    <h2>Shopping Cart</h2>
+                    <p>This is an example</p> 
+                </div>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-8">
+                            <div class="items">
+                                <div class="product">
+                                    <div class="info">
+                                        <div class="product-details">
+                                            <div class="row justify-content-md-center">
+                                                <div class="col-md-3">
+                                                    <img class="img-fluid mx-auto d-block image" src="imagenes/mazorcas.jpg">
+                                                </div>
+                                                <div class="col-md-4 product-detail">
+                                                    <h5>kit para cultivo de maiz</h5>
+                                                    <div class="product-info col-md-4">
+                                                        <p><b>Description: </b><span id="product-description">
+                                                            <div class="col"></div>
+                                                            <li>Paraquat<input type="number" id="quantity" value="1" min="0" class="form-control "></li> 
+                                                            <li>Losrsban</li> 
+                                                            <li>Amistar</li> 
+                                                            <li>Urea</li> 
+                                                            <li>Fosforita</li> 
+                                                            <li>Cloruro</li> 
+                                                        </span><br>
+                                                        
+                                                        <b>Price:</b> $ <span id="unit-price">10</span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 product-detail">
+                                                    <label for="quantity"><h5>n° Hectareas</h5></label>
+                                                    <input type="number" id="quantity" value="1" min="1" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-4">
+                            <div class="summary">
+                                <h3>Cart</h3>
+                                <div class="summary-item"><span class="text">Subtotal</span><span class="price" id="cart-total"></span></div>
+                                    <button class="btn btn-success btn-lg btn-block" id="checkout-btn">Checkout</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    
-    
-
-    
+        </section>
+    </main>
+        
 </body>
 </html>
