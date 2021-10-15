@@ -6,6 +6,8 @@ const calcular = require('../calcular/calcular');
 const jwt = require('jsonwebtoken');
 const {promisify} = require('util');
 const cookieParser = require('cookie-parser');
+const { Console } = require('console');
+//const { CLIENT_RENEG_LIMIT } = require('tls');
 //const authcontroller = require('../controller/authcontroller')
 
 
@@ -101,8 +103,10 @@ router.get('/logout', (req, res)=>{
     res.clearCookie('jwt')
     return res.redirect('/')
 });
-
-//router.post('/auth', authcontroller.login)
+router.get('/admin/logout', (req, res)=>{
+    res.clearCookie('jwt')
+    return res.redirect('/')
+});
 
 
 router.get("/registro.html", (req, res) =>{
@@ -236,8 +240,118 @@ router.get("/pagar.html",isAuthenticateduser, (req, res) =>{
 
 //admin
 router.get("/administrador.html", isAuthenticated, (req, res)=>{
-    res.render("administrador.html");
+    connection.query('SELECT * FROM productos',(error, filas) =>{
+        console.log(filas);
+        if(error){
+            throw error;
+        }else{
+            res.render('administrador.html', {filas:filas});
+        }
+    });
 });
+
+//administrador-actualizar productos
+router.get('/admin/actualizar.html/:id',(req, res)=>{
+    const id = req.params.id;
+    connection.query('SELECT * FROM productos WHERE id= ?',[id],(error, fila)=>{
+        if(error){
+            throw error;
+        }else{
+            res.render('admin/actualizar.html', {row:fila[0]});
+        }
+    });
+    //res.render('/administrador/actualizar.html');
+});
+
+//administrador-agregar productos
+router.get('/admin/agregarProduct.html', (req, res)=>{
+    res.render('admin/agregarProduct.html');
+})
+
+
+//administrador usuarios
+router.get("/admin/user.html", isAuthenticated, (req, res)=>{
+    connection.query('SELECT * FROM users',(error, user) =>{
+        console.log(user);
+        if(error){
+            throw error;
+        }else{
+            res.render('admin/user.html', {user:user});
+        }
+    });
+    
+});    
+
+//mostrar lista
+router.get('/api/articulos', (req, res)=>{
+    connection.query('SELECT * FROM users',(error, filas) =>{
+        //console.log(filas);
+        if(error){
+            throw error;
+        }else{
+            res.send(filas);
+        }
+    });
+});
+
+//mostrar un solo articulo de la db
+router.get('/api/articulos/:id', (req, res)=>{
+    connection.query('SELECT * FROM productos WHERE id= ?',[req.params.id],(error, fila) =>{
+        if(error){
+            throw error;
+        }else{
+            res.send(fila);
+        }
+    });
+});
+
+//insertar un articulo
+router.post('/api/articulos', (req, res)=>{
+    let data= {PRODUCTO: req.body.producto, DESCRIPCION: req.body.descripcion, STOCK: req.body.stock, PRECIO: req.body.precio};
+    console.log(data.PRODUCTO);
+    if(data.PRODUCTO && data.DESCRIPCION && data.STOCK && data.PRECIO){
+        let sql ="INSERT INTO productos SET ?";
+    connection.query(sql, data, function(error, results){
+        if(error){
+            throw error;
+        }else{
+            res.redirect('/administrador.html');
+        }
+    });
+    }else{
+        res.redirect('/administrador.html');
+    }
+    
+});
+
+//editar articulos
+router.post('/api/articulos/:id', (req, res)=>{
+    let PRODUCTO= req.body.producto;
+    let DESCRIPCION= req.body.descripcion;
+    let STOCK= req.body.stock;
+    let PRECIO= req.body.precio;
+    let id= req.body.id;
+    connection.query('UPDATE productos SET ? WHERE id= ?', [{PRODUCTO:PRODUCTO, DESCRIPCION:DESCRIPCION, STOCK:STOCK, PRECIO:PRECIO},id], (error, results)=>{
+        if(error){
+            throw error;
+        }else{
+            res.redirect('/administrador.html');
+        }
+    });
+});
+
+//elinar articulos
+router.get('/delete/:id', (req, res)=>{
+    let id = req.params.id;
+    connection.query('DELETE FROM productos WHERE id= ?',[id], (error, rows)=>{
+        if(error){
+            throw error;
+        }else{
+            res.redirect('/administrador.html');
+        }
+    });
+});
+
 
 
 module.exports = router;
