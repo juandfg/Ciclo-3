@@ -9,6 +9,7 @@ const cookieParser = require('cookie-parser');
 const { Console } = require('console');
 //const { CLIENT_RENEG_LIMIT } = require('tls');
 //const authcontroller = require('../controller/authcontroller')
+//maribella estuvo aqui
 
 
 router.get('/', /*isAuthenticateduser,*/ (req, res) =>{
