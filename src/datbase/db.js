@@ -2,11 +2,11 @@ const express = require('express');
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE,
-    port: process.env.DB_PORT
+    host: "localhost",
+    user: "root",
+    password: "Az2kt2yx8u*",
+    database: "login",
+    port: "3306"
 });
 
 connection.connect((error)=>{
