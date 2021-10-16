@@ -123,7 +123,7 @@ router.post('/registro.html', async (req, res) =>{
         connection.query('SELECT * FROM users WHERE user = ?', [user], async (error, results) =>{
             if(results.length == 0){
                 
-                connection.query('INSERT INTO users SET ?',{user:user, apellido:apellido, email:email, dirección:direccion, password:passwordHaash}, async (error, results) =>{
+                connection.query('INSERT INTO users SET ?',{user:user, apellido:apellido, email:email, dirección:direccion, pass:passwordHaash}, async (error, results) =>{
                     if(error){
                         console.log(error)
                     }else{
