@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 const {promisify} = require('util');
 const cookieParser = require('cookie-parser');
 const { Console } = require('console');
-//const { CLIENT_RENEG_LIMIT } = require('tls');
+
 //const authcontroller = require('../controller/authcontroller')
 
 
