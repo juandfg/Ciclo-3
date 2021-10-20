@@ -108,7 +108,7 @@ router.get('/admin/logout', (req, res)=>{
     return res.redirect('/')
 });
 
-
+//registros
 router.get("/registro.html", (req, res) =>{
     res.render("registro.html");
 });
@@ -239,15 +239,8 @@ router.get("/pagar.html",isAuthenticateduser, (req, res) =>{
 });
 
 //admin
-router.get("/administrador.html", isAuthenticated, (req, res)=>{
-    connection.query('SELECT * FROM productos',(error, filas) =>{
-        console.log(filas);
-        if(error){
-            throw error;
-        }else{
-            res.render('administrador.html', {filas:filas});
-        }
-    });
+router.get("/dash.html", isAuthenticated, (req, res)=>{
+    res.render("dash.html");
 });
 
 //administrador-actualizar productos
@@ -268,7 +261,17 @@ router.get('/admin/agregarProduct.html', (req, res)=>{
     res.render('admin/agregarProduct.html');
 })
 
-
+//administrador de productos
+router.get("/admin/administrador.html", isAuthenticated, (req, res)=>{
+    connection.query('SELECT * FROM productos',(error, filas) =>{
+        console.log(filas);
+        if(error){
+            throw error;
+        }else{
+            res.render('admin/administrador.html', {filas:filas});
+        }
+    });
+})
 //administrador usuarios
 router.get("/admin/user.html", isAuthenticated, (req, res)=>{
     connection.query('SELECT * FROM users',(error, user) =>{
@@ -292,6 +295,11 @@ router.get('/api/articulos', (req, res)=>{
             res.send(filas);
         }
     });
+});
+
+//maiz
+router.get('/ptos/maiz.html', (req, res)=>{
+    res.render('ptos/maiz.html');
 });
 
 //mostrar un solo articulo de la db
@@ -335,7 +343,7 @@ router.post('/api/articulos/:id', (req, res)=>{
         if(error){
             throw error;
         }else{
-            res.redirect('/administrador.html');
+            res.redirect('/admin/administrador.html');
         }
     });
 });
@@ -347,7 +355,7 @@ router.get('/delete/:id', (req, res)=>{
         if(error){
             throw error;
         }else{
-            res.redirect('/administrador.html');
+            res.redirect('/admin/administrador.html');
         }
     });
 });
