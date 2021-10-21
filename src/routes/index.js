@@ -121,7 +121,11 @@ router.post('/registro.html', async (req, res) =>{
     const apellido = req.body.apellido;
     const email = req.body.email;
     const direccion = req.body.direccion;
-    let passwordHaash = await bcryptjs.hash(pass, 8);
+    try{
+        let passwordHaash = await bcryptjs.hash(pass, 8);
+    } catch (error) {
+        console.log(error)}
+    
     if(user && pass){
         connection.query('SELECT * FROM users WHERE user = ?', [user], async (error, results) =>{
             if(results.length == 0){
