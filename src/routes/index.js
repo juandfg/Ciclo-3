@@ -12,7 +12,7 @@ const { Console } = require('console');
 
 
 router.get('/', /*isAuthenticateduser,*/ (req, res) =>{
-    res.render('index.html', /*{user:req.user }*/);
+    res.render('index.html', {user:req.user });
 });
 
 router.get("/login.html", (req, res) =>{
