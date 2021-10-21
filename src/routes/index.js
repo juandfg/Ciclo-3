@@ -21,12 +21,8 @@ router.get("/login.html", (req, res) =>{
 router.post('/auth', async (req, res) =>{
     const user = req.body.user;
     const pass = req.body.pass;
-    try {
-        let passwordHaash = await bcryptjs.hash(pass, 8);
-    } catch (error) {
-        console.log(error)
-    }
     
+    let passwordHaash = await bcryptjs.hash(pass, 8);
     if(user && pass){
         
             connection.query('SELECT * FROM users WHERE user = ?', [user], async (error, results) =>{
@@ -126,11 +122,7 @@ router.post('/registro.html', async (req, res) =>{
     const apellido = req.body.apellido;
     const email = req.body.email;
     const direccion = req.body.direccion;
-    try{
-        let passwordHaash = await bcryptjs.hash(pass, 8);
-    } catch (error) {
-        console.log(error)}
-    
+    let passwordHaash = await bcryptjs.hash(pass, 8);
     if(user && pass){
         connection.query('SELECT * FROM users WHERE user = ?', [user], async (error, results) =>{
             if(results.length == 0){
@@ -162,6 +154,8 @@ router.post('/registro.html', async (req, res) =>{
                 });
             }
         });
+    }else{
+        res.redirect('/')
     }
 });
 
