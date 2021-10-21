@@ -239,7 +239,7 @@ router.get("/pagar.html",isAuthenticateduser, (req, res) =>{
 });
 
 //admin
-router.get("/dash.html",  (req, res)=>{
+router.get("/dash.html", isAuthenticated, (req, res)=>{
     res.render("dash.html");
 });
 
@@ -262,7 +262,7 @@ router.get('/admin/agregarProduct.html', (req, res)=>{
 })
 
 //administrador de productos
-router.get("/admin/administrador.html",  (req, res)=>{
+router.get("/admin/administrador.html", isAuthenticated, (req, res)=>{
     connection.query('SELECT * FROM productos',(error, filas) =>{
         console.log(filas);
         if(error){
@@ -273,7 +273,7 @@ router.get("/admin/administrador.html",  (req, res)=>{
     });
 })
 //administrador usuarios
-router.get("/admin/user.html",  (req, res)=>{
+router.get("/admin/user.html", isAuthenticated, (req, res)=>{
     connection.query('SELECT * FROM users',(error, user) =>{
         console.log(user);
         if(error){
