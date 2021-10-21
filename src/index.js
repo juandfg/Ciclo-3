@@ -15,11 +15,6 @@ app.set("views", path.join(__dirname, "views"));
 app.engine("html", require("ejs").renderFile);
 app.set("view engine", "ejs");
 app.use(session({
-    cookie:{
-        secure: true,
-        maxAge:60000
-    },
-    store: new RedisStore(),
     secret:'secret',
     resave:false,
     saveUninitialized:true
