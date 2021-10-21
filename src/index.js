@@ -14,10 +14,6 @@ const PORT = process.env.PORT || 3000;
 app.set("views", path.join(__dirname, "views"));
 app.engine("html", require("ejs").renderFile);
 app.set("view engine", "ejs");
-
-//-momery unleaked---------
-app.set('trust proxy', 1);
-
 app.use(session({
     cookie:{
         secure: true,
@@ -28,13 +24,6 @@ app.use(session({
     resave:false,
     saveUninitialized:true
 }));
-
-app.use(function(req,res,next){
-    if(!req.session){
-        return next(new Error('Oh no')) //handle error
-    }
-    next() //otherwise continue
-    });
 
 //cookie-parser
 app.use(cookieParser());
