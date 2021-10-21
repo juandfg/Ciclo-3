@@ -25,6 +25,13 @@ app.use(session({
     saveUninitialized:true
 }));
 
+app.use(function(req,res,next){
+    if(!req.session){
+        return next(new Error('Oh no')) //handle error
+    }
+    next() //otherwise continue
+    });
+
 //cookie-parser
 app.use(cookieParser());
 
