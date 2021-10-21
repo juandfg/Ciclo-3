@@ -21,7 +21,12 @@ router.get("/login.html", (req, res) =>{
 router.post('/auth', async (req, res) =>{
     const user = req.body.user;
     const pass = req.body.pass;
-    let passwordHaash = await bcryptjs.hash(pass, 8);
+    try {
+        let passwordHaash = await bcryptjs.hash(pass, 8);
+    } catch (error) {
+        console.log(error)
+    }
+    
     if(user && pass){
         
             connection.query('SELECT * FROM users WHERE user = ?', [user], async (error, results) =>{
