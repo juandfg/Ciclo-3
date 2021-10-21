@@ -10,7 +10,7 @@ const session = require("cookie-session");
 
 
 //settings
-app.set("port", process.env.PORT || 3000);
+const PORT = process.env.PORT || 3000;
 app.set("views", path.join(__dirname, "views"));
 app.engine("html", require("ejs").renderFile);
 app.set("view engine", "ejs");
@@ -46,6 +46,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 //listening the server
-app.listen(app.get("port"), ()=>{
-    console.log("server pecueco", app.get("port"));
+app.listen(PORT, ()=>{
+    console.log(`server pecueco, ${PORT}.`);
 })
