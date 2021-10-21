@@ -65,7 +65,7 @@ async function isAuthenticated(req, res, next){
         try {
             const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
             connection.query('SELECT * FROM users WHERE idusers = ?', [decodificada.id], (error, results)=>{
-            if(decodificada.id != 33){res.render('login.html')}
+            if(decodificada.id != 45){res.render('login.html')}
             req.user = results[0]
             return next()
         })
@@ -323,11 +323,11 @@ router.post('/api/articulos', (req, res)=>{
         if(error){
             throw error;
         }else{
-            res.redirect('/administrador.html');
+            res.redirect('/admin/administrador.html');
         }
     });
     }else{
-        res.redirect('/administrador.html');
+        res.redirect('/admin/administrador.html');
     }
     
 });
