@@ -239,7 +239,7 @@ router.get("/pagar.html",isAuthenticateduser, (req, res) =>{
 });
 
 //admin
-router.get("/dash.html", isAuthenticated, (req, res)=>{
+router.get("/dash.html",  (req, res)=>{
     res.render("dash.html");
 });
 
