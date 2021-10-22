@@ -196,7 +196,7 @@ router.post('/productos.html', (req, res)=>{
                             "Nitrogeno: Urea  , " +
                             "Fosforo: Fosforita H   , " +
                             "Potasio: Cloruro   , "+
-                            "Total ha pagar: " + calcular.operacion(CantHeta5,palce),
+                            "El costo para: "+CantHeta5 +" Hectarias seria: " + calcular.operacion(CantHeta5,palce),
             alertIcon: 'success',
             showConfirmButton: true,
             timer: '',
@@ -213,9 +213,9 @@ router.post('/productos.html', (req, res)=>{
                 "Nitrogeno: Urea  , " +
                 "Fosforo: Fosforita H   , " +
                 "Potasio: Cloruro   , "+
-                "Total ha pagar: "+ calcular.operacion(CantHeta1,palce),
+                "El costo para: "+CantHeta1 +" Hectarias seria: " + calcular.operacion(CantHeta1,palce),
                 alertIcon: 'success',
-                showConfirmButton: false,
+                showConfirmButton: true,
                 timer: '',
                 ruta: 'productos.html'
                 });
@@ -230,9 +230,9 @@ router.post('/productos.html', (req, res)=>{
                 "Nitrogeno: Urea  , " +
                 "Fosforo: Fosforita H   , " +
                 "Potasio: Cloruro   , "+
-                "Total ha pagar: "+ calcular.operacion(CantHeta2,palce),
+                "El costo para: "+CantHeta2 +" Hectarias seria: " + calcular.operacion(CantHeta2,palce),
                 alertIcon: 'success',
-                showConfirmButton: false,
+                showConfirmButton: true,
                 timer: '',
                 ruta: 'productos.html'
                 });
@@ -247,9 +247,9 @@ router.post('/productos.html', (req, res)=>{
                 "Nitrogeno: Urea  , " +
                 "Fosforo: Fosforita H   , " +
                 "Potasio: Cloruro   , "+
-                "Total ha pagar: "+ calcular.operacion(CantHeta3,palce),
+                "El costo para: "+CantHeta3 +" Hectarias seria: " + calcular.operacion(CantHeta3,palce),
                 alertIcon: 'success',
-                showConfirmButton: false,
+                showConfirmButton: true,
                 timer: '',
                 ruta: 'productos.html'
                 });
@@ -264,9 +264,9 @@ router.post('/productos.html', (req, res)=>{
                 "Nitrogeno: Urea  , " +
                 "Fosforo: Fosforita H   , " +
                 "Potasio: Cloruro   , "+
-                "Total ha pagar: "+ calcular.operacion(CantHeta4,palce),
+                "El costo para: "+CantHeta4 +" Hectarias seria: " + calcular.operacion(CantHeta4,palce),
                 alertIcon: 'success',
-                showConfirmButton: false,
+                showConfirmButton: true,
                 timer: '',
                 ruta: 'productos.html'
                 });
