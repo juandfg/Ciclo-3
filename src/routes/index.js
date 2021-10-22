@@ -206,11 +206,16 @@ router.post('/productos.html', (req, res)=>{
             let palce = 3568000;
             res.render('productos.html',{
                 alert:true,
-                alertTitle: "Hecho",
-                alertMessage: "¡Total!"+ calcular.operacion(CantHeta1,palce),
+                alertTitle: 'los insumos son: ',
+                alertMessage: 'Herbicida: Paraquat  , '  +
+                "Insecticida: Losrsban  , " + 
+                "Fungicida: Amistar  , " +
+                "Nitrogeno: Urea  , " +
+                "Fosforo: Fosforita H   , " +
+                "Potasio: Cloruro   , "+
+                "Total ha pagar: "+ calcular.operacion(CantHeta1,palce),
                 alertIcon: 'success',
                 showConfirmButton: false,
-                footer: '<a href="/pagar.html">Desea agregar al carrito?</a>',
                 timer: '',
                 ruta: 'productos.html'
                 });
@@ -218,11 +223,16 @@ router.post('/productos.html', (req, res)=>{
             let palce = 2226440;
             res.render('productos.html',{
                 alert:true,
-                alertTitle: "Hecho",
-                alertMessage: "¡Total!"+ calcular.operacion(CantHeta2,palce),
+                alertTitle: 'los insumos son: ',
+                alertMessage: 'Herbicida: Goal 2EC  , '  +
+                "Insecticida: Malathion 57EC  , " + 
+                "Fungicida: Authority 250SC  , " +
+                "Nitrogeno: Urea  , " +
+                "Fosforo: Fosforita H   , " +
+                "Potasio: Cloruro   , "+
+                "Total ha pagar: "+ calcular.operacion(CantHeta2,palce),
                 alertIcon: 'success',
                 showConfirmButton: false,
-                footer: '<a href="/pagar.html">Desea agregar al carrito?</a>',
                 timer: '',
                 ruta: 'productos.html'
                 });
@@ -230,11 +240,16 @@ router.post('/productos.html', (req, res)=>{
             let palce = 1275950;
             res.render('productos.html',{
                 alert:true,
-                alertTitle: "Hecho",
-                alertMessage: "¡Total!"+ calcular.operacion(CantHeta3,palce),
+                alertTitle: 'los insumos son: ',
+                alertMessage: 'Herbicida: Campero 304SL  , '  +
+                "Insecticida: Albatross 200SC  , " + 
+                "Fungicida: Belico 500SC  , " +
+                "Nitrogeno: Urea  , " +
+                "Fosforo: Fosforita H   , " +
+                "Potasio: Cloruro   , "+
+                "Total ha pagar: "+ calcular.operacion(CantHeta3,palce),
                 alertIcon: 'success',
                 showConfirmButton: false,
-                footer: '<a href="/pagar.html">Desea agregar al carrito?</a>',
                 timer: '',
                 ruta: 'productos.html'
                 });
@@ -242,11 +257,16 @@ router.post('/productos.html', (req, res)=>{
             let palce = 1144400;
             res.render('productos.html',{
                 alert:true,
-                alertTitle: "Hecho",
-                alertMessage: "¡Total!"+ calcular.operacion(CantHeta4,palce),
+                alertTitle: 'los insumos son: ',
+                alertMessage: 'Herbicida: Rainboglif 757  , '  +
+                "Insecticida: Imidacloprid 35% SC  , " + 
+                "Fungicida: Azuco  , " +
+                "Nitrogeno: Urea  , " +
+                "Fosforo: Fosforita H   , " +
+                "Potasio: Cloruro   , "+
+                "Total ha pagar: "+ calcular.operacion(CantHeta4,palce),
                 alertIcon: 'success',
                 showConfirmButton: false,
-                footer: '<a href="/pagar.html">Desea agregar al carrito?</a>',
                 timer: '',
                 ruta: 'productos.html'
                 });
