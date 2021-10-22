@@ -15,6 +15,8 @@ router.get('/', /*isAuthenticateduser,*/ (req, res) =>{
     res.render('index.html', {user:req.user });
 });
 
+
+//login
 router.get("/login.html", (req, res) =>{
     res.render("login.html");
 });
@@ -64,6 +66,8 @@ router.post('/auth', async (req, res) =>{
     }
 });
 
+
+//autenticacion para usuarios o admin
 async function isAuthenticated(req, res, next){
     if(req.cookies.jwt){
         try {
@@ -103,6 +107,8 @@ async function isAuthenticateduser(req, res, next){
     
 };
 
+
+//cerrar seccion
 router.get('/logout', (req, res)=>{
     res.clearCookie('jwt')
     return res.redirect('/')
@@ -159,12 +165,17 @@ router.post('/registro.html', async (req, res) =>{
     }
 });
 
-
-router.get("/contact.html", (req, res) =>{
-    res.render("contact.html");
+//sobre nosotros
+router.get("/about.html", (req, res) =>{
+    res.render("about.html");
 });
 
-//productos
+//catalogo de productos
+router.get('/catalogo.html', (req, res)=>{
+    res.render('catalogo.html');
+});
+
+//kit de productos por hectarea
 router.get("/productos.html", (req, res) =>{
     res.render("productos.html");
 });
@@ -178,11 +189,16 @@ router.post('/productos.html', (req, res)=>{
         let palce = 51313100;
         res.render('productos.html',{
             alert:true,
-            alertTitle: "Hecho",
-            alertMessage: "¡Total!"+ calcular.operacion(CantHeta5,palce),
+            alertTitle: 'los insumos son: ',
+            alertMessage:   'Herbicida: Destierro SL  , '  +
+                            "Insecticida: kunfu 100EC  , " + 
+                            "Fungicida: Colisión 250SC  , " +
+                            "Nitrogeno: Urea  , " +
+                            "Fosforo: Fosforita H   , " +
+                            "Potasio: Cloruro   , "+
+                            "Total ha pagar: " + calcular.operacion(CantHeta5,palce),
             alertIcon: 'success',
-            showConfirmButton: false,
-            footer: '<a href="/pagar.html">Desea agregar al carrito?</a>',
+            showConfirmButton: true,
             timer: '',
             ruta: 'productos.html'
             });
@@ -238,6 +254,24 @@ router.post('/productos.html', (req, res)=>{
             console.log('bobo hp')
         }
 });
+
+//info sobre cultivos
+router.get('/ptos/maiz.html', (req, res)=>{
+    res.render('ptos/maiz.html');
+});
+router.get('/ptos/arroz.html', (req, res)=>{
+    res.render('ptos/arroz.html');
+});
+router.get('/ptos/cafe.html', (req, res)=>{
+    res.render('ptos/cafe.html');
+});
+router.get('/ptos/cacao.html', (req, res)=>{
+    res.render('ptos/cacao.html');
+});
+router.get('/ptos/aceite.html', (req, res)=>{
+    res.render('ptos/aceite.html');
+});
+
 
 //cart
 router.get("/pagar.html",isAuthenticateduser, (req, res) =>{
@@ -303,10 +337,6 @@ router.get('/api/articulos', (req, res)=>{
     });
 });
 
-//maiz
-router.get('/ptos/maiz.html', (req, res)=>{
-    res.render('ptos/maiz.html');
-});
 
 //mostrar un solo articulo de la db
 router.get('/api/articulos/:id', (req, res)=>{

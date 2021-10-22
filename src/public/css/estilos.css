@@ -9,7 +9,7 @@ body{
     background: #fff;
 }
 
-span{
+/*span{
     position: absolute;
     pointer-events: none;
     background: rgb(186, 252, 206);
@@ -31,7 +31,7 @@ span{
         transform: scale(1) translateY(-500%) rotate(360deg);
         opacity: 0;
     }
-}
+}*/
 
 .card img{
     z-index: 1;

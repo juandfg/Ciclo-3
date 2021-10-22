@@ -23,7 +23,6 @@
                                     <input type="text" name="CantHetaMaiz" id="CantHetaMaiz" placeholder="ingrese la cantida de hetareas" required>
                                     <input type="submit" class="btn btn-success btn-block" value="calcular">
                                 </form>
-                                <a href="https://biz.payulatam.com/B0e875d7BE9832E"><img src="https://ecommerce.payulatam.com/img-secure-2015/boton_pagar_mediano.png"></a>
                                 <a class="btn btn-success btn-block" href="https://buy.stripe.com/test_7sIcNb4Bycu0dvG5kl" >Agregar al carro</a>
                             </div>
                         </div>
@@ -40,7 +39,6 @@
                                     <input type="text" name="CantHetaCafe" id="CantHetaCafe" placeholder="ingrese la cantida de hetareas" required>
                                     <input type="submit" class="btn btn-success btn-block" value="calcular">
                                 </form>
-                                <a href="https://biz.payulatam.com/B0e875dA494A0D3"><img src="https://ecommerce.payulatam.com/img-secure-2015/boton_pagar_mediano.png"></a>
                                 <a class="btn btn-success btn-block" href="https://buy.stripe.com/test_fZecNb4By79GgHS5km" >Agregar al carro</a>
                             </div>
                         </div>
@@ -57,7 +55,6 @@
                                     <input type="text" name="CantHetaCacao" id="CantHetaCacao" placeholder="ingrese la cantida de hetareas" required>
                                     <input type="submit" class="btn btn-success btn-block " value="calcular">
                                 </form>
-                                <a href="https://biz.payulatam.com/B0e875dE7907590"><img src="https://ecommerce.payulatam.com/img-secure-2015/boton_pagar_mediano.png"></a>
                                 <a class="btn btn-success btn-block " href="https://buy.stripe.com/test_eVa00p4By3XucrCaEH" >Agregar al carro</a>
                             </div>
                         </div>
@@ -76,7 +73,6 @@
                                     <input type="text" name="CantHetaPalma" id="CantHetaPalma" placeholder="ingrese la cantida de hetareas" required>
                                     <input type="submit" class="btn btn-success btn-block " value="calcular">
                                 </form>
-                                <a href="https://biz.payulatam.com/B0e875d62601637"><img src="https://ecommerce.payulatam.com/img-secure-2015/boton_pagar_mediano.png"></a>
                                 <a class="btn btn-success btn-block " href="https://buy.stripe.com/test_bIYeVj8ROeC89fq004" >Agregar al carro</a>
                             </div>
                         </div>
@@ -94,7 +90,6 @@
                                             <input type="text" name="CantHetaArroz" id="CantHetaArroz" placeholder="ingrese la cantida de hetareas" required>
                                             <input type="submit" class="btn btn-success btn-block " value="calcular">
                                         </form>
-                                        <a href="https://biz.payulatam.com/B0e875d30AB8986"><img src="https://ecommerce.payulatam.com/img-secure-2015/boton_pagar_mediano.png"></a>
                                         <a class="btn btn-success" href="https://buy.stripe.com/test_4gw5kJgkgeC8fDO5kk">Agregar al carro</a>
                                     </div>
                             </div>
@@ -117,7 +112,6 @@
                 text:'<%= alertMessage %>',
                 icon:'<%= alertIcon %>',
                 showConfirmButton:<%= showConfirmButton %>,
-                footer: '<%= footer%>',
                 timer:'<%= timer%>'
             }).then(() =>{
                 window.location='<%= ruta%>'
@@ -126,4 +120,9 @@
     <% } %>
 
 </body>
+<footer>
+    <section>
+        <%-include("partials/footer.html")%>
+    </section>
+</footer>
 </html>
