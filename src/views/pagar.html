@@ -10,6 +10,11 @@
 </head>
 <body>
     <%-include("partials/body.html")%>
+    <% if(user) { %>
+        <h2 class="badge bg-success shadow-lg">Usuario:
+            <%= user.user %>
+        </h2>
+    <% } %>
     <main>
         <!-- Shopping Cart -->
         <section class="shopping-cart dark">
