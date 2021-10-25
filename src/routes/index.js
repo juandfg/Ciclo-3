@@ -11,7 +11,7 @@ const { Console } = require('console');
 //const authcontroller = require('../controller/authcontroller')
 
 
-router.get('/', /*isAuthenticateduser,*/ (req, res) =>{
+router.get('/', isAuthenticateduser, (req, res) =>{
     res.render('index.html', {user:req.user });
 });
 
@@ -91,7 +91,9 @@ async function isAuthenticateduser(req, res, next){
         try {
             const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
             connection.query('SELECT * FROM users WHERE idusers = ?', [decodificada.id], (error, results)=>{
-            if(!results){res.render('/')}
+            if(!results){
+                res.render('/')
+            }
             req.user = results[0]
             return next()
         })
@@ -177,7 +179,7 @@ router.get('/catalogo.html', (req, res)=>{
 
 //kit de productos por hectarea
 router.get("/productos.html", (req, res) =>{
-    res.render("productos.html");
+    res.render("productos.html" );
 });
 router.post('/productos.html', (req, res)=>{
     const CantHeta5 = req.body.CantHetaPalma;
@@ -295,13 +297,33 @@ router.get('/ptos/aceite.html', (req, res)=>{
 
 //cart
 router.get("/pagar.html",isAuthenticateduser, (req, res) =>{
-    res.render("pagar.html");
+    res.render("pagar.html", {user:req.user });
 });
 
-//admin
+//mostrar datos de productos en el dash
 router.get("/dash.html", isAuthenticated, (req, res)=>{
-    res.render("dash.html");
+    connection.query('SELECT * FROM productos users',(error, filas) =>{
+        console.log(filas);
+        if(error){
+            throw error;
+        }else{
+            res.render("dash.html", {filas:filas});
+        }
+    });
+    
 });
+
+//mostrar datos de ususarios registrados en el dash
+/*router.get("/dash.html", isAuthenticated, (req, res)=>{
+    connection.query('SELECT * FROM users',(error, user) =>{
+        console.log(user);
+        if(error){
+            throw error;
+        }else{
+            res.render("dash.html", {user:user});
+        }
+    });
+});*/
 
 //administrador-actualizar productos
 router.get('/admin/actualizar.html/:id',(req, res)=>{
@@ -404,7 +426,7 @@ router.post('/api/articulos/:id', (req, res)=>{
     });
 });
 
-//elinar articulos
+//eliminar articulos
 router.get('/delete/:id', (req, res)=>{
     let id = req.params.id;
     connection.query('DELETE FROM productos WHERE id= ?',[id], (error, rows)=>{

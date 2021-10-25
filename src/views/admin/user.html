@@ -5,45 +5,96 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>usuarios</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css">
     <%-include("../partials/head.html")%>
 </head>
 <body>
-    <%-include("../partials/body.html")%>
-    <div class="container">
-        <div class="col-12">
-            <table id="productos" class="shadow-lg table table-success table-striped table-hover" >
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">USER</th>
-                        <th scope="col">PASS</th>
-                        <th scope="col">EMAIL</th>
-                        <th scope="col">DIRECCION</th>
-                        <th scope="col">APELLIDO</th>
-                        <th scope="col">ACCION</th>
-                    </tr>
-                </thead>
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <h1><b>Dashboard</b></h1>
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="bi bi-bars"></i>
+                </button>
 
-                <tbody>
-                    <% user.forEach((users)=>{ %>
-
-                        <tr>
-                            <td><%= users.idusers %></td>
-                            <td><%= users.user %></td>
-                            <td><%= users.pass %></td>
-                            <td><%= users.email %></td>
-                            <td><%= users.dirección %></td>
-                            <td><%= users.apellido %></td>
-                            <td>
-                                <a href="/api/articulos/:id" class="btn btn-success"><i class="bi bi-trash"></i></a>
-                            </td>
-                        </tr>
-                        
-                    <% }) %>
-                </tbody>
-            </table>
+                <!-- Topbar Navbar -->
+                <ul class="navbar-nav ml-auto">
+        
+                    <!-- Nav Item - productos -->
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <a class="nav-link dropdown-toggle" href="/admin/administrador.html" id="messagesDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-envelope fa-fw"></i>
+                            <!-- Counter - Messages -->
+                            <span class="badge badge-danger badge-counter">7</span>
+                        Tabla de productos</a>
+                    </li>
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <a class="nav-link dropdown-toggle" href="/admin/user.html" id="messagesDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-envelope fa-fw"></i>
+                            <!-- Counter - Messages -->
+                            <span class="badge badge-danger badge-counter">7</span>
+                        Tabla de Usuarios</a>
+                    </li>
+                    <div class="topbar-divider d-none d-sm-block"></div>
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="/dash.html" id="userDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                            <img class="img-fluid rounded-circle"
+                                src="../imagenes/logo.png" width="30px">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="/admin/logout" data-toggle="modal" data-target="#logoutModal">
+                                <i class="bi bi-search mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <table id="productos" class="shadow-lg table table-success table-striped table-hover" >
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">USER</th>
+                            <th scope="col">APELLIDO</th>
+                            <th scope="col">EMAIL</th>
+                            <th scope="col">DIRECCION</th>
+                            <th scope="col">ACCION</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% user.forEach((users)=>{ %>
+                            <tr>
+                                <td><%= users.idusers %></td>
+                                <td><%= users.user %></td>
+                                <td><%= users.apellido %></td>
+                                <td><%= users.email %></td>
+                                <td><%= users.dirección %></td>
+                                <td>
+                                    <a href="/api/articulos/:id" class="btn btn-success"><i class="bi bi-trash"></i></a>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>
 </body>
 <footer>
     <section>
